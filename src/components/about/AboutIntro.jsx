@@ -43,8 +43,13 @@ export default function AboutIntro() {
               <Image src={PROFILE.photo} alt={`${PROFILE.name} 프로필 사진`} fill priority sizes="240px" className="object-cover" />
             </motion.div>
           </div>
-          {/* 학력 · 교육 */}
+          {/* 경력 구분 · 학력 */}
           <div className="min-w-0 flex-1 md:mt-8 md:max-w-[320px]">
+            <p className="mb-2 text-[11px] font-semibold tracking-[0.2em] text-muted md:mb-3 md:text-xs">CAREER</p>
+            <p className="mb-5 flex flex-wrap items-center gap-2 text-[13px] font-bold md:mb-7 md:text-sm">
+              <span className="rounded-full bg-accent px-2.5 py-0.5 text-[11px] text-white md:text-xs">{PROFILE.experience}</span>
+              {PROFILE.position}
+            </p>
             <p className="mb-2 text-[11px] font-semibold tracking-[0.2em] text-muted md:mb-3 md:text-xs">EDUCATION</p>
             <ul className="border-t border-line">
               {EDUCATION.map((e) => (

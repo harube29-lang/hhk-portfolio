@@ -77,8 +77,7 @@ export default function Hero() {
           animate={{ opacity: ready ? 1 : 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span>( 00 ) INTRO</span>
-          <span className="hidden sm:inline">WEB &amp; MOBILE · UX/UI · CARD NEWS</span>
+          <span>WEB &amp; MOBILE · UX/UI · CARD NEWS</span>
         </motion.div>
 
         <h1 className="text-[clamp(1.6rem,4.2vw,4.25rem)] font-extrabold leading-[1.22] tracking-[-0.03em]">
