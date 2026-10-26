@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* ────────────────────────────────────────
+   디자인 토큰
+   paper  : 웜 오프화이트 배경
+   ink    : 본문/타이포 블랙
+   accent : 포인트 오렌지레드 (기존 브랜드 오렌지 계승)
+──────────────────────────────────────── */
+@theme {
+  --color-paper: #f3f1ec;
+  --color-paper-2: #e9e6df;
+  --color-ink: #141414;
+  --color-muted: #6b6862;
+  --color-line: rgb(20 20 20 / 0.12);
+  --color-accent: #ff4d1a;
+
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), "Pretendard Variable", Pretendard, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  word-break: keep-all;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* 모달 열림 시 배경 스크롤 잠금 */
+body.is-locked {
+  overflow: hidden;
+}
+
+/* 마퀴 텍스트 (CSS 무한 루프) */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee { animation: none; }
+}
+
+/* 아웃라인 타이포 */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-ink);
+}
