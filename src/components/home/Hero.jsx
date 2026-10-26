@@ -1,7 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { LineReveal } from '@/components/ui/Reveal'
 import { useOpeningDone } from '@/components/layout/Opening'
 
@@ -63,14 +62,10 @@ function SpinBadge() {
 
 export default function Hero() {
   const ready = useOpeningDone()
-  const ref = useRef(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '25%'])
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
 
   return (
-    <section ref={ref} className="relative flex min-h-[86svh] flex-col justify-end overflow-hidden px-5 pb-10 pt-28 md:px-10 md:pb-14">
-      <motion.div style={{ y, opacity }} className="mx-auto w-full max-w-[1600px]">
+    <section className="relative flex min-h-[86svh] flex-col justify-end px-5 pb-12 pt-28 md:px-10 md:pb-16">
+      <div className="mx-auto w-full max-w-[1600px]">
         <motion.div
           className="mb-8 flex items-center justify-between text-xs font-semibold tracking-[0.2em] text-muted md:mb-12"
           initial={{ opacity: 0 }}
@@ -106,7 +101,7 @@ export default function Hero() {
             <SpinBadge />
           </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }
