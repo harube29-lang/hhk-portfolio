@@ -12,7 +12,7 @@ const EASE = [0.16, 1, 0.3, 1]
 export function Logo({ className = '' }) {
   return (
     <Link href="/" className={`font-display text-lg font-extrabold tracking-tight ${className}`} aria-label="홈으로">
-      HYEKYUNG<span className="text-accent">●</span>
+      HYE KYOUNG<span className="text-accent">●</span>
     </Link>
   )
 }
@@ -45,13 +45,21 @@ export default function Header() {
     document.body.classList.toggle('is-locked', open)
   }, [open])
 
+  /* 프로젝트 상세(검은 배경)에서는 헤더를 밝은 글자로 반전 — 모바일 메뉴가 열리면 원래 색 */
+  const dark = /^\/project\/[^/]+/.test(pathname) && !open
+
   const isActive = (href) => (href === '/' ? pathname === '/' : pathname.startsWith(href))
 
   return (
     <>
       <motion.header
         className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-          scrolled && !open ? 'border-b border-line bg-paper/80 backdrop-blur-md' : 'border-b border-transparent'
+          scrolled && !open
+            ? dark
+              ? 'border-b border-paper/10 bg-ink/80 backdrop-blur-md'
+              : 'border-b border-line bg-paper/80 backdrop-blur-md'
+            : 'border-b border-transparent'
+        } ${dark ? 'text-paper' : 'text-ink'
         }`}
         animate={{ y: hidden && !open ? '-100%' : '0%' }}
         transition={{ duration: 0.45, ease: EASE }}
@@ -69,11 +77,11 @@ export default function Header() {
                 {isActive(item.href) && (
                   <motion.span
                     layoutId="nav-pill"
-                    className="absolute inset-0 rounded-full bg-ink"
+                    className={`absolute inset-0 rounded-full ${dark ? 'bg-paper' : 'bg-ink'}`}
                     transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                   />
                 )}
-                <span className={`relative ${isActive(item.href) ? 'text-paper' : 'text-ink hover:text-accent'}`}>
+                <span className={`relative ${isActive(item.href) ? (dark ? 'text-ink' : 'text-paper') : 'hover:text-accent'}`}>
                   {item.label}
                 </span>
               </Link>
@@ -97,8 +105,8 @@ export default function Header() {
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
             >
-              <motion.span className="block h-[2px] w-6 bg-ink" animate={open ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }} />
-              <motion.span className="block h-[2px] w-6 bg-ink" animate={open ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }} />
+              <motion.span className="block h-[2px] w-6 bg-current" animate={open ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }} />
+              <motion.span className="block h-[2px] w-6 bg-current" animate={open ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }} />
             </button>
           </div>
         </div>

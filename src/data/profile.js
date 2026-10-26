@@ -2,11 +2,10 @@ import { asset } from '@/lib/asset'
 
 /* ════════════════════════════════════════
    개인 정보 · 연락처
-   - linkedin 처럼 값이 빈 링크는 화면에 표시되지 않습니다.
 ════════════════════════════════════════ */
 export const PROFILE = {
   name: '황혜경',
-  nameEn: 'HWANG HYEKYUNG',
+  nameEn: 'HWANG HYE KYOUNG',
   role: 'Web & Mobile · UX/UI · Card News Designer',
   major: '동명대학교 산업디자인전공',
   slogan: '아이디어를 현실로 만드는 디자이너',
@@ -16,11 +15,6 @@ export const PROFILE = {
 export const CONTACT = {
   email: 'harube29@naver.com',
   phone: '010-4491-0523',
-  links: [
-    { label: 'Instagram', href: 'https://www.instagram.com/' },
-    { label: 'LinkedIn', href: '' },
-    { label: 'GitHub', href: 'https://github.com/harube29-lang' },
-  ],
 }
 
 export const NAV_ITEMS = [
@@ -37,7 +31,26 @@ export const SKILLS = [
   { no: '04', name: 'Card News Layout', desc: '한 장 안에서 핵심이 읽히는 정보 위계와 시리즈형 콘텐츠 레이아웃' },
 ]
 
-export const TOOLS = ['Figma', 'Photoshop', 'Illustrator', 'HTML/CSS', 'React', 'AI Vibe Coding']
+/* ── ABOUT: 툴 · 기술 스택 (level: 숙련도 %) ── */
+export const TOOL_GROUPS = [
+  {
+    group: 'Design',
+    items: [
+      { name: 'Figma', level: 75, desc: 'UI/UX 디자인 및 프로토타이핑' },
+      { name: 'Photoshop', level: 75, desc: '이미지 보정 및 그래픽 편집' },
+      { name: 'Illustrator', level: 75, desc: '벡터 그래픽 및 아이콘 제작' },
+    ],
+  },
+  {
+    group: 'Frontend',
+    items: [
+      { name: 'HTML', level: 65, desc: '웹 페이지 구조 마크업' },
+      { name: 'CSS', level: 65, desc: '스타일링과 반응형 레이아웃' },
+      { name: 'React', level: 40, desc: '컴포넌트 기반 화면 구현' },
+      { name: 'JavaScript', level: 35, desc: '동적 인터랙션 구현' },
+    ],
+  },
+]
 
 /* ── ABOUT: 경력 · 활동 타임라인 ── */
 export const TIMELINE = [

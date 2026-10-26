@@ -7,8 +7,8 @@ import { categoryLabel } from '@/data/projects'
 /* 프로젝트 카드
    - 호버: 이미지 확대 + 하단 패널(서브타이틀 · 태그) 슬라이드업
    - 터치 기기에서도 정보가 보이도록 제목/카테고리는 카드 아래 항상 노출
-   - href 가 있으면 링크, 없으면 onOpen 버튼 */
-export default function ProjectCard({ project, href, onOpen, aspect = 'aspect-[4/3]', sizes, priority }) {
+   - 클릭 시 href(프로젝트 상세 페이지)로 이동 */
+export default function ProjectCard({ project, href, aspect = 'aspect-[4/3]', sizes, priority, ...rest }) {
   const contain = project.thumbFit === 'contain'
 
   const body = (
@@ -52,15 +52,9 @@ export default function ProjectCard({ project, href, onOpen, aspect = 'aspect-[4
     </>
   )
 
-  const cls = 'group block w-full text-left outline-none'
-
-  return href ? (
-    <Link href={href} className={cls} data-cursor="VIEW">
+  return (
+    <Link href={href} className="group block w-full text-left outline-none" data-cursor="VIEW" {...rest}>
       {body}
     </Link>
-  ) : (
-    <button type="button" onClick={() => onOpen(project)} className={cls} data-cursor="VIEW" aria-haspopup="dialog">
-      {body}
-    </button>
   )
 }

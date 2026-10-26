@@ -11,7 +11,6 @@ export default function Footer() {
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end end'] })
   const x = useTransform(scrollYProgress, [0, 1], ['-12%', '0%'])
-  const links = CONTACT.links.filter((l) => l.href)
 
   return (
     <footer id="contact" ref={ref} className="relative overflow-hidden bg-ink text-paper">
@@ -39,23 +38,13 @@ export default function Footer() {
             </a>
           </Magnetic>
 
-          <dl className="grid grid-cols-2 gap-6 text-sm">
+          <dl className="text-sm md:justify-self-end">
             <div>
-              <dt className="mb-2 text-paper/40">PHONE</dt>
+              <dt className="mb-2 text-xs tracking-[0.2em] text-paper/40">PHONE</dt>
               <dd>
-                <a href={`tel:${CONTACT.phone.replaceAll('-', '')}`} className="hover:text-accent">
+                <a href={`tel:${CONTACT.phone.replaceAll('-', '')}`} className="font-display text-2xl font-bold tracking-tight transition-colors hover:text-accent md:text-4xl">
                   {CONTACT.phone}
                 </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="mb-2 text-paper/40">SOCIAL</dt>
-              <dd className="flex flex-col gap-1">
-                {links.map((l) => (
-                  <a key={l.label} href={l.href} target="_blank" rel="noreferrer" className="hover:text-accent">
-                    {l.label} ↗
-                  </a>
-                ))}
               </dd>
             </div>
           </dl>
@@ -66,7 +55,7 @@ export default function Footer() {
           style={{ x }}
           className="mt-20 whitespace-nowrap font-display text-[19vw] font-extrabold leading-[0.8] tracking-tighter text-paper/[0.07]"
         >
-          HYEKYUNG ● DESIGN
+          HYE KYOUNG ● DESIGN
         </motion.p>
 
         <div className="mt-8 flex flex-col gap-4 border-t border-paper/15 pt-6 text-xs text-paper/50 md:flex-row md:items-center md:justify-between">

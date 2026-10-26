@@ -69,7 +69,7 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
 
   return (
-    <section ref={ref} className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden px-5 pb-10 pt-28 md:px-10 md:pb-14">
+    <section ref={ref} className="relative flex min-h-[86svh] flex-col justify-end overflow-hidden px-5 pb-10 pt-28 md:px-10 md:pb-14">
       <motion.div style={{ y, opacity }} className="mx-auto w-full max-w-[1600px]">
         <motion.div
           className="mb-8 flex items-center justify-between text-xs font-semibold tracking-[0.2em] text-muted md:mb-12"
@@ -81,7 +81,7 @@ export default function Hero() {
           <span className="hidden sm:inline">WEB &amp; MOBILE · UX/UI · CARD NEWS</span>
         </motion.div>
 
-        <h1 className="text-[clamp(1.85rem,5.6vw,5.75rem)] font-extrabold leading-[1.18] tracking-[-0.03em]">
+        <h1 className="text-[clamp(1.6rem,4.2vw,4.25rem)] font-extrabold leading-[1.22] tracking-[-0.03em]">
           <LineReveal lines={LINES} play={ready} stagger={0.1} delay={0.1} />
         </h1>
 

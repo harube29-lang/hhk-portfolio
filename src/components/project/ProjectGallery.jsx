@@ -1,12 +1,11 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
 import { CATEGORIES, PROJECTS } from '@/data/projects'
 import { LineReveal } from '@/components/ui/Reveal'
 import { useOpeningDone } from '@/components/layout/Opening'
 import ProjectCard from './ProjectCard'
-import ProjectModal from './ProjectModal'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -15,30 +14,9 @@ const countOf = (id) => (id === 'ALL' ? PROJECTS.length : PROJECTS.filter((p) =>
 export default function ProjectGallery() {
   const ready = useOpeningDone()
   const [filter, setFilter] = useState('ALL')
-  const [active, setActive] = useState(null)
 
   const items = useMemo(() => (filter === 'ALL' ? PROJECTS : PROJECTS.filter((p) => p.category === filter)), [filter])
 
-  /* URL 해시(#slug)로 모달 열기 — HOME 갤러리에서 넘어올 때 사용 */
-  useEffect(() => {
-    const openFromHash = () => {
-      const slug = decodeURIComponent(window.location.hash.slice(1))
-      setActive(PROJECTS.find((p) => p.slug === slug) ?? null)
-    }
-    openFromHash()
-    window.addEventListener('hashchange', openFromHash)
-    return () => window.removeEventListener('hashchange', openFromHash)
-  }, [])
-
-  const open = useCallback((project) => {
-    setActive(project)
-    history.replaceState(null, '', `#${project.slug}`)
-  }, [])
-
-  const close = useCallback(() => {
-    setActive(null)
-    history.replaceState(null, '', window.location.pathname)
-  }, [])
 
   return (
     <section className="mx-auto min-h-screen max-w-[1600px] px-5 pb-28 pt-32 md:px-10 md:pb-40 md:pt-44">
@@ -57,7 +35,7 @@ export default function ProjectGallery() {
           </h1>
         </div>
         <p className="max-w-sm text-muted">
-          카테고리를 선택해 작업을 살펴보세요. 카드를 누르면 상세 디자인 컷을 볼 수 있습니다.
+          카테고리를 선택해 작업을 살펴보세요. 카드를 누르면 상세 페이지로 이동합니다.
         </p>
       </div>
 
@@ -109,7 +87,7 @@ export default function ProjectGallery() {
               exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.25 } }}
               transition={{ duration: 0.6, ease: EASE, delay: i * 0.05 }}
             >
-              <ProjectCard project={p} onOpen={open} priority={i < 3} />
+              <ProjectCard project={p} href={`/project/${p.slug}`} priority={i < 3} />
             </motion.li>
           ))}
         </AnimatePresence>
@@ -131,7 +109,6 @@ export default function ProjectGallery() {
         )}
       </AnimatePresence>
 
-      <ProjectModal project={active} onClose={close} />
     </section>
   )
 }

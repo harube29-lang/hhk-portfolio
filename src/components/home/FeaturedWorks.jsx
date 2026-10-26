@@ -1,75 +1,66 @@
 'use client'
 
-import { useRef } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { PROJECTS } from '@/data/projects'
-import ProjectCard from '@/components/project/ProjectCard'
-import Magnetic from '@/components/ui/Magnetic'
-import { LineReveal, Reveal } from '@/components/ui/Reveal'
+import { PROJECTS, categoryLabel } from '@/data/projects'
 
-const FEATURED = PROJECTS.filter((p) => p.featured).slice(0, 3)
-
-/* 데스크톱 비대칭 배치 + 카드별 패럴랙스 속도 차 */
-const LAYOUT = [
-  { col: 'md:col-span-7', aspect: 'aspect-[4/3]', speed: 0 },
-  { col: 'md:col-span-5 md:mt-40', aspect: 'aspect-[4/5]', speed: -60 },
-  { col: 'md:col-span-5 md:col-start-3', aspect: 'aspect-[4/5]', speed: -30 },
-]
-
-function ParallaxItem({ project, layout }) {
-  const ref = useRef(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], [0, layout.speed])
-
+/* 작업물 무한 흐름 띠 (레퍼런스: 그르르 스튜디오 메인)
+   - 화면 끝까지 꽉 찬 세로형 이미지 타일이 좁은 간격으로 왼쪽으로 계속 흐름
+   - 같은 목록을 2번 이어 붙이고 -50% 까지 이동 → 끊김 없는 루프
+   - 마우스를 올리면 일시정지 + 제목 노출, 누르면 프로젝트 상세 페이지로 이동
+   - 두 번째 목록은 보조기기·탭 이동에서 제외 (중복 방지)
+   - '동작 줄이기' 설정 시 애니메이션 대신 가로 스크롤 */
+function Tile({ project, hidden }) {
   return (
-    <motion.div ref={ref} style={{ y }} className={layout.col}>
-      <Reveal>
-        <ProjectCard
-          project={project}
-          href={`/project#${project.slug}`}
-          aspect={layout.aspect}
-          sizes="(min-width: 768px) 55vw, 100vw"
+    <li className="w-[48vw] shrink-0 sm:w-[28vw] lg:w-[16vw]">
+      <Link
+        href={`/project/${project.slug}`}
+        data-cursor="VIEW"
+        tabIndex={hidden ? -1 : undefined}
+        className="group relative block aspect-[4/5] overflow-hidden bg-paper-2"
+      >
+        <Image
+          src={project.cover ?? project.thumb.src}
+          alt={hidden ? '' : `${project.title} 작업 이미지`}
+          fill
+          sizes="(min-width: 1024px) 16vw, (min-width: 640px) 28vw, 48vw"
+          className="object-cover object-top transition-transform duration-[900ms] ease-out-expo group-hover:scale-[1.05]"
         />
-      </Reveal>
-    </motion.div>
+        {/* 호버 시 제목 */}
+        <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/80 via-ink/10 to-transparent p-4 text-paper opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
+          <span className="text-[11px] font-bold tracking-widest text-accent">{categoryLabel(project.category)}</span>
+          <span className="mt-1 text-base font-extrabold md:text-lg">{project.title}</span>
+        </div>
+      </Link>
+    </li>
   )
 }
 
 export default function FeaturedWorks() {
   return (
-    <section className="mx-auto max-w-[1600px] px-5 pb-28 md:px-10 md:pb-40">
-      <div className="mb-12 flex flex-col gap-6 md:mb-20 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-muted">( 01 ) SELECTED WORKS</p>
-          <h2 className="font-display text-[clamp(2.75rem,8vw,7rem)] font-extrabold leading-[0.9] tracking-[-0.04em]">
-            <LineReveal lines={['Selected', <>Works<sup className="ml-2 align-super text-[0.3em] text-accent">({String(FEATURED.length).padStart(2, '0')})</sup></>]} />
-          </h2>
-        </div>
-        <p className="max-w-sm text-muted">
-          브랜드의 성격을 읽고, 사용자가 헤매지 않는 흐름을 설계한 작업들입니다.
+    <section aria-label="작업물" className="pb-24 md:pb-32">
+      <div className="mx-auto mb-5 flex max-w-[1600px] items-end justify-between gap-4 px-5 md:mb-6 md:px-10">
+        <p className="text-[11px] font-semibold tracking-[0.2em] text-muted md:text-xs">
+          ( 01 ) SELECTED WORKS <span className="text-accent">({String(PROJECTS.length).padStart(2, '0')})</span>
         </p>
+        <Link href="/project" className="group flex shrink-0 items-center gap-2 text-sm font-bold">
+          전체 프로젝트 보기
+          <span className="transition-transform group-hover:translate-x-1" aria-hidden>
+            →
+          </span>
+        </Link>
       </div>
 
-      <div className="grid gap-14 md:grid-cols-12 md:gap-x-10 md:gap-y-24">
-        {FEATURED.map((p, i) => (
-          <ParallaxItem key={p.slug} project={p} layout={LAYOUT[i % LAYOUT.length]} />
-        ))}
-      </div>
-
-      <div className="mt-20 flex justify-center md:mt-28">
-        <Magnetic>
-          <Link
-            href="/project"
-            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-ink px-8 py-5 font-bold"
-          >
-            <span className="absolute inset-0 translate-y-full rounded-full bg-ink transition-transform duration-500 ease-out-expo group-hover:translate-y-0" />
-            <span className="relative transition-colors duration-500 group-hover:text-paper">전체 프로젝트 보기</span>
-            <span className="relative transition-colors duration-500 group-hover:text-accent" aria-hidden>
-              →
-            </span>
-          </Link>
-        </Magnetic>
+      <div className="group/marquee overflow-hidden motion-reduce:overflow-x-auto">
+        <div className="animate-marquee flex w-max group-hover/marquee:[animation-play-state:paused]" style={{ animationDuration: '45s' }}>
+          {[0, 1].map((copy) => (
+            <ul key={copy} className="flex shrink-0 gap-4 pr-4 md:gap-6 md:pr-6" aria-hidden={copy === 1 || undefined}>
+              {PROJECTS.map((p) => (
+                <Tile key={p.slug} project={p} hidden={copy === 1} />
+              ))}
+            </ul>
+          ))}
+        </div>
       </div>
     </section>
   )

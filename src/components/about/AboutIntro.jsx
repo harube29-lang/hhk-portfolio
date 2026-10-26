@@ -13,12 +13,6 @@ const PARAGRAPHS = [
   '어떤 매체나 플랫폼을 마주하더라도 사용자가 헤매지 않고 자연스럽게 스며드는 레이아웃과 화면을 만들어가고자 합니다.',
 ]
 
-const PRINCIPLES = [
-  { k: 'Observe', v: '불편함을 먼저 읽는 관찰' },
-  { k: 'Simplify', v: '복잡함은 덜어내기' },
-  { k: 'Include', v: '누구도 소외되지 않게' },
-]
-
 export default function AboutIntro() {
   const ready = useOpeningDone()
   const imgRef = useRef(null)
@@ -43,37 +37,29 @@ export default function AboutIntro() {
 
       <div className="grid gap-12 md:grid-cols-12 md:gap-10">
         {/* 비주얼 */}
-        <div className="md:col-span-5">
-          <div ref={imgRef} className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-paper-2">
+        <div className="md:col-span-3">
+          <div ref={imgRef} className="relative aspect-[4/5] w-full max-w-[200px] overflow-hidden rounded-3xl bg-paper-2 md:max-w-[240px]">
             <motion.div style={{ y: imgY }} className="absolute inset-[-8%_0]">
-              <Image src={PROFILE.photo} alt={`${PROFILE.name} 프로필 사진`} fill priority sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" />
+              <Image src={PROFILE.photo} alt={`${PROFILE.name} 프로필 사진`} fill priority sizes="240px" className="object-cover" />
             </motion.div>
-            <span className="absolute bottom-4 left-4 rounded-full bg-paper px-4 py-2 text-xs font-bold">
-              {PROFILE.major}
-            </span>
           </div>
+          {/* 사진이 작아져 배지 대신 캡션으로 표기 */}
+          <p className="mt-3 text-xs font-semibold text-muted">{PROFILE.major}</p>
         </div>
 
         {/* 텍스트 */}
-        <div className="flex flex-col justify-between gap-12 md:col-span-6 md:col-start-7">
-          <div className="space-y-6 text-lg leading-relaxed md:text-xl md:leading-relaxed">
-            {PARAGRAPHS.map((p, i) => (
-              <Reveal key={i} delay={i * 0.08} as="p" className={i === 0 ? 'font-bold' : 'text-ink/80'}>
+        <div className="md:col-span-8 md:col-start-5">
+          {/* 첫 문장은 크게·굵게, 이어지는 서브 문구는 작게 */}
+          <Reveal as="p" className="text-[clamp(1.5rem,2.6vw,2.5rem)] font-extrabold leading-[1.35] tracking-[-0.02em]">
+            {PARAGRAPHS[0]}
+          </Reveal>
+          <div className="mt-8 max-w-xl space-y-4 border-t border-line pt-8 text-[15px] leading-relaxed text-ink/70 md:text-base md:leading-relaxed">
+            {PARAGRAPHS.slice(1).map((p, i) => (
+              <Reveal key={i} delay={(i + 1) * 0.08} as="p">
                 {p}
               </Reveal>
             ))}
           </div>
-
-          <Reveal>
-            <ul className="grid grid-cols-1 border-t border-line sm:grid-cols-3">
-              {PRINCIPLES.map((p) => (
-                <li key={p.k} className="border-b border-line py-5 sm:border-b-0 sm:pr-4">
-                  <p className="font-display text-2xl font-bold">{p.k}</p>
-                  <p className="mt-1 text-sm text-muted">{p.v}</p>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
         </div>
       </div>
     </section>

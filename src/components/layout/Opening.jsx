@@ -47,7 +47,7 @@ export default function OpeningProvider({ children }) {
           >
             <div className="flex justify-between text-xs tracking-[0.2em] text-paper/60">
               <span>PORTFOLIO 2026</span>
-              <span>HWANG HYEKYUNG</span>
+              <span>HWANG HYE KYOUNG</span>
             </div>
             <div className="flex items-end justify-between">
               <span className="font-display text-[22vw] font-extrabold leading-[0.8] md:text-[14vw]">
