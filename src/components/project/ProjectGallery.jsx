@@ -19,11 +19,11 @@ export default function ProjectGallery() {
 
 
   return (
-    <section className="mx-auto min-h-screen max-w-[1600px] px-5 pb-28 pt-32 md:px-10 md:pb-40 md:pt-44">
-      <div className="mb-12 flex flex-col gap-6 md:mb-16 md:flex-row md:items-end md:justify-between">
+    <section className="mx-auto min-h-screen max-w-[1600px] px-5 pb-20 pt-24 md:px-10 md:pb-40 md:pt-44">
+      <div className="mb-8 flex flex-col gap-4 md:mb-16 md:gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-muted">( WORK ) ALL PROJECTS</p>
-          <h1 className="font-display text-[clamp(3.5rem,13vw,12rem)] font-extrabold leading-[0.85] tracking-[-0.05em]">
+          <h1 className="font-display text-[clamp(2.75rem,13vw,12rem)] font-extrabold leading-[0.85] tracking-[-0.05em]">
             <LineReveal
               play={ready}
               lines={[
@@ -34,7 +34,7 @@ export default function ProjectGallery() {
             />
           </h1>
         </div>
-        <p className="max-w-sm text-muted">
+        <p className="max-w-sm text-sm text-muted md:text-base">
           카테고리를 선택해 작업을 살펴보세요. 카드를 누르면 상세 페이지로 이동합니다.
         </p>
       </div>
@@ -44,7 +44,7 @@ export default function ProjectGallery() {
         <div
           role="tablist"
           aria-label="프로젝트 카테고리"
-          className="-mx-5 mb-12 flex gap-2 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-0 md:mb-16 md:flex-wrap md:px-0"
+          className="mb-8 flex flex-wrap gap-1.5 md:mb-16 md:gap-2"
         >
           {CATEGORIES.map((c) => {
             const selected = filter === c.id
@@ -54,7 +54,7 @@ export default function ProjectGallery() {
                 role="tab"
                 aria-selected={selected}
                 onClick={() => setFilter(c.id)}
-                className={`relative shrink-0 rounded-full border px-5 py-2.5 text-sm font-bold tracking-wide transition-colors ${
+                className={`relative shrink-0 rounded-full border px-3 py-1.5 text-[11px] font-bold tracking-wide md:px-5 md:py-2.5 md:text-sm transition-colors ${
                   selected ? 'border-ink text-paper' : 'border-line text-ink hover:border-ink'
                 }`}
               >
@@ -76,7 +76,7 @@ export default function ProjectGallery() {
       </LayoutGroup>
 
       {/* 그리드 — 필터 변경 시 layout 애니메이션으로 재정렬 */}
-      <motion.ul layout className="grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
+      <motion.ul layout className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-6 sm:gap-y-14 lg:grid-cols-3 lg:gap-x-8">
         <AnimatePresence mode="popLayout">
           {items.map((p, i) => (
             <motion.li
@@ -99,7 +99,7 @@ export default function ProjectGallery() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-line py-28 text-center"
+            className="flex flex-col items-center justify-center col-span-2 rounded-3xl border border-dashed border-line py-20 text-center md:py-28"
           >
             <p className="font-display text-4xl font-extrabold tracking-tight md:text-6xl">
               Coming Soon<span className="text-accent">.</span>

@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { PROFILE } from '@/data/profile'
+import { PROFILE, EDUCATION } from '@/data/profile'
 import { LineReveal, Reveal } from '@/components/ui/Reveal'
 import { useOpeningDone } from '@/components/layout/Opening'
 
@@ -20,10 +20,10 @@ export default function AboutIntro() {
   const imgY = useTransform(scrollYProgress, [0, 1], ['-8%', '8%'])
 
   return (
-    <section className="mx-auto max-w-[1600px] px-5 pb-24 pt-32 md:px-10 md:pb-36 md:pt-44">
-      <p className="mb-6 text-xs font-semibold tracking-[0.2em] text-muted">( ABOUT ME ) INDUSTRIAL DESIGN → UX/UI</p>
+    <section className="mx-auto max-w-[1600px] px-5 pb-16 pt-24 md:px-10 md:pb-36 md:pt-44">
+      <p className="mb-4 text-[11px] font-semibold tracking-[0.2em] text-muted md:mb-6 md:text-xs">( ABOUT ME ) INDUSTRIAL DESIGN → UX/UI</p>
 
-      <h1 className="mb-16 text-[clamp(2.25rem,7vw,6.5rem)] font-extrabold leading-[1.1] tracking-[-0.03em] md:mb-24">
+      <h1 className="mb-10 text-[clamp(1.9rem,7vw,6.5rem)] font-extrabold leading-[1.1] tracking-[-0.03em] md:mb-24">
         <LineReveal
           lines={[
             '누구나 편안하게',
@@ -35,25 +35,35 @@ export default function AboutIntro() {
         />
       </h1>
 
-      <div className="grid gap-12 md:grid-cols-12 md:gap-10">
+      <div className="grid gap-10 md:grid-cols-12 md:gap-10">
         {/* 비주얼 */}
-        <div className="md:col-span-3">
-          <div ref={imgRef} className="relative aspect-[4/5] w-full max-w-[200px] overflow-hidden rounded-3xl bg-paper-2 md:max-w-[240px]">
+        <div className="flex items-start gap-5 md:col-span-3 md:block">
+          <div ref={imgRef} className="relative aspect-[4/5] w-[120px] shrink-0 overflow-hidden rounded-2xl bg-paper-2 md:w-full md:max-w-[240px] md:rounded-3xl">
             <motion.div style={{ y: imgY }} className="absolute inset-[-8%_0]">
               <Image src={PROFILE.photo} alt={`${PROFILE.name} 프로필 사진`} fill priority sizes="240px" className="object-cover" />
             </motion.div>
           </div>
-          {/* 사진이 작아져 배지 대신 캡션으로 표기 */}
-          <p className="mt-3 text-xs font-semibold text-muted">{PROFILE.major}</p>
+          {/* 학력 · 교육 */}
+          <div className="min-w-0 flex-1 md:mt-8 md:max-w-[320px]">
+            <p className="mb-2 text-[11px] font-semibold tracking-[0.2em] text-muted md:mb-3 md:text-xs">EDUCATION</p>
+            <ul className="border-t border-line">
+              {EDUCATION.map((e) => (
+                <li key={e.title} className="border-b border-line py-3">
+                  <p className="text-[13px] font-bold leading-snug md:text-sm">{e.title}</p>
+                  <p className="mt-1 font-display text-xs font-semibold tabular-nums text-muted">{e.period}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* 텍스트 */}
         <div className="md:col-span-8 md:col-start-5">
           {/* 첫 문장은 크게·굵게, 이어지는 서브 문구는 작게 */}
-          <Reveal as="p" className="text-[clamp(1.5rem,2.6vw,2.5rem)] font-extrabold leading-[1.35] tracking-[-0.02em]">
+          <Reveal as="p" className="text-[clamp(1.25rem,2.6vw,2.5rem)] font-extrabold leading-[1.35] tracking-[-0.02em]">
             {PARAGRAPHS[0]}
           </Reveal>
-          <div className="mt-8 max-w-xl space-y-4 border-t border-line pt-8 text-[15px] leading-relaxed text-ink/70 md:text-base md:leading-relaxed">
+          <div className="mt-6 max-w-xl space-y-3 border-t border-line pt-6 text-sm md:mt-8 md:space-y-4 md:pt-8 md:text-[15px] leading-relaxed text-ink/70 md:text-base md:leading-relaxed">
             {PARAGRAPHS.slice(1).map((p, i) => (
               <Reveal key={i} delay={(i + 1) * 0.08} as="p">
                 {p}

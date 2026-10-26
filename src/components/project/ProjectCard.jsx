@@ -13,7 +13,7 @@ export default function ProjectCard({ project, href, aspect = 'aspect-[4/3]', si
 
   const body = (
     <>
-      <div className={`relative overflow-hidden rounded-2xl bg-paper-2 ${aspect}`} style={contain ? { background: project.tone } : undefined}>
+      <div className={`relative overflow-hidden rounded-xl bg-paper-2 md:rounded-2xl ${aspect}`} style={contain ? { background: project.tone } : undefined}>
         <Image
           src={project.thumb.src}
           alt={`${project.title} 썸네일`}
@@ -37,17 +37,17 @@ export default function ProjectCard({ project, href, aspect = 'aspect-[4/3]', si
           </ul>
         </div>
 
-        <span className="absolute left-3 top-3 rounded-full bg-ink px-3 py-1 text-[11px] font-bold tracking-wider text-paper">
+        <span className="absolute left-2 top-2 rounded-full bg-ink px-2 py-0.5 text-[9px] font-bold tracking-wider text-paper md:left-3 md:top-3 md:px-3 md:py-1 md:text-[11px]">
           {categoryLabel(project.category)}
         </span>
       </div>
 
-      <div className="mt-4 flex items-baseline justify-between gap-4">
-        <h3 className="text-lg font-bold md:text-xl">
+      <div className="mt-2.5 flex items-baseline justify-between gap-4 md:mt-4">
+        <h3 className="text-sm font-bold md:text-xl">
           {project.title}
-          <span className="ml-2 font-display text-sm font-semibold tracking-wide text-muted">{project.titleEn}</span>
+          <span className="ml-2 hidden font-display text-sm font-semibold tracking-wide text-muted md:inline">{project.titleEn}</span>
         </h3>
-        <span className="shrink-0 text-xs text-muted">{project.badge}</span>
+        <span className="hidden shrink-0 text-xs text-muted sm:inline">{project.badge}</span>
       </div>
     </>
   )

@@ -54,9 +54,14 @@ export const TOOL_GROUPS = [
 
 /* ── ABOUT: 경력 · 활동 타임라인 ── */
 export const TIMELINE = [
-  { year: '2026', title: 'UX/UI · 웹디자인 개인 프로젝트', desc: '웹 디자인 4건, 모바일 앱 UI 1건, AI 바이브 코딩 1건 진행' },
-  { year: '2015', title: 'D2B 디자인페어 홍보 서포터즈', desc: '3개월간 디자인 페어 홍보 활동' },
-  { year: '2014', title: 'D2B 디자인페어 공모전 입선', desc: '' },
-  { year: '2013', title: 'D2B 디자인페어 공모전 입선', desc: '' },
   { year: 'EDU', title: '동명대학교 산업디자인전공', desc: '제품 형태·사용성 중심의 디자인 프로세스 학습' },
+  { year: '2013', title: 'D2B 디자인페어 공모전 입선', desc: '' },
+  { year: '2014', title: 'D2B 디자인페어 공모전 입선', desc: '' },
+  { year: '2015', title: 'D2B 디자인페어 홍보 서포터즈', desc: '3개월간 디자인 페어 홍보 활동' },
+]
+
+/* ── ABOUT: 학력 · 교육 (사진 아래) ── */
+export const EDUCATION = [
+  { title: '동명대학교 산업디자인전공', period: '2012.03 – 2016.02' },
+  { title: 'SBS아카데미 웹디자인 개발 양성과정 수료', period: '2026.02 – 2026.07' },
 ]

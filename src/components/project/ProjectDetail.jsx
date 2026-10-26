@@ -28,9 +28,9 @@ export default function ProjectDetail({ project, prev, next }) {
     <article className="bg-ink text-paper">
       <div className="mx-auto grid max-w-[1600px] lg:grid-cols-[minmax(360px,32%)_1fr]">
         {/* ── 왼쪽 고정 정보 패널 ── */}
-        <aside className="px-5 pb-12 pt-28 md:px-10 lg:sticky lg:top-0 lg:flex lg:h-dvh lg:flex-col lg:justify-between lg:pb-10 lg:pt-32">
+        <aside className="px-5 pb-10 pt-24 md:px-10 lg:sticky lg:top-0 lg:flex lg:h-dvh lg:flex-col lg:justify-between lg:pb-10 lg:pt-32">
           <div>
-            <Link href="/project" className="group mb-10 inline-flex items-center gap-2 text-sm font-semibold text-paper/60 hover:text-paper">
+            <Link href="/project" className="group mb-6 inline-flex items-center gap-2 text-xs font-semibold md:mb-10 md:text-sm text-paper/60 hover:text-paper">
               <span className="transition-transform group-hover:-translate-x-1" aria-hidden>
                 ←
               </span>
@@ -45,7 +45,7 @@ export default function ProjectDetail({ project, prev, next }) {
             </div>
 
             <p className="font-display text-sm font-bold tracking-widest text-accent">{project.titleEn}</p>
-            <h1 className="mt-2 text-[clamp(2.25rem,4vw,3.75rem)] font-extrabold leading-[1.1] tracking-tight">
+            <h1 className="mt-2 text-[clamp(1.85rem,4vw,3.75rem)] font-extrabold leading-[1.1] tracking-tight">
               <LineReveal lines={[project.title]} play={ready} />
             </h1>
             <motion.div
@@ -53,10 +53,10 @@ export default function ProjectDetail({ project, prev, next }) {
               animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.25, ease: EASE }}
             >
-              <p className="mt-4 text-lg font-semibold text-paper/85">{project.subtitle}</p>
-              <p className="mt-6 max-w-md leading-relaxed text-paper/60">{project.description}</p>
+              <p className="mt-3 text-base font-semibold text-paper/85 md:mt-4 md:text-lg">{project.subtitle}</p>
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-paper/60 md:mt-6 md:text-base">{project.description}</p>
 
-              <dl className="mt-8 grid max-w-md grid-cols-2 gap-4 border-t border-paper/15 pt-5 text-sm">
+              <dl className="mt-6 grid max-w-md grid-cols-2 gap-4 border-t border-paper/15 pt-4 text-xs md:mt-8 md:pt-5 md:text-sm">
                 <div>
                   <dt className="text-paper/40">TYPE</dt>
                   <dd className="mt-1 font-semibold">{project.badge}</dd>

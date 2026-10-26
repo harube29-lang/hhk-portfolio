@@ -41,7 +41,7 @@ export default function FeaturedWorks() {
     <section aria-label="작업물" className="pb-24 md:pb-32">
       <div className="mx-auto mb-5 flex max-w-[1600px] items-end justify-between gap-4 px-5 md:mb-6 md:px-10">
         <p className="text-[11px] font-semibold tracking-[0.2em] text-muted md:text-xs">
-          ( 01 ) SELECTED WORKS <span className="text-accent">({String(PROJECTS.length).padStart(2, '0')})</span>
+          ( 01 ) SELECTED WORKS
         </p>
         <Link href="/project" className="group flex shrink-0 items-center gap-2 text-sm font-bold">
           전체 프로젝트 보기
