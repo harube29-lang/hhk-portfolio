@@ -23,7 +23,7 @@ export default function AboutIntro() {
     <section className="mx-auto max-w-[1600px] px-5 pb-16 pt-24 md:px-10 md:pb-36 md:pt-44">
       <p className="mb-4 text-[11px] font-semibold tracking-[0.2em] text-muted md:mb-6 md:text-xs">( ABOUT ME ) INDUSTRIAL DESIGN → UX/UI</p>
 
-      <h1 className="mb-10 text-[clamp(1.9rem,7vw,6.5rem)] font-extrabold leading-[1.1] tracking-[-0.03em] md:mb-24">
+      <h1 className="mb-10 text-[clamp(1.9rem,7vw,6.5rem)] font-extrabold leading-[1.1] tracking-[-0.03em] md:mb-14">
         <LineReveal
           lines={[
             '누구나 편안하게',
@@ -63,7 +63,7 @@ export default function AboutIntro() {
         </div>
 
         {/* 텍스트 */}
-        <div className="md:col-span-8 md:col-start-5">
+        <div className="md:col-span-8 md:col-start-4">
           {/* 첫 문장은 크게·굵게, 이어지는 서브 문구는 작게 */}
           <Reveal as="p" className="text-[clamp(1.25rem,2.6vw,2.5rem)] font-extrabold leading-[1.35] tracking-[-0.02em]">
             {PARAGRAPHS[0]}

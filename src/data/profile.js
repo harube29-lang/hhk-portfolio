@@ -9,7 +9,7 @@ export const PROFILE = {
   role: 'Web & Mobile · UX/UI · Card News Designer',
   major: '동명대학교 산업디자인전공',
   experience: '신입',
-  position: 'UX/UI · 웹 디자이너',
+  position: 'UX/UI · 디지털 콘텐츠 디자이너',
   slogan: '아이디어를 현실로 만드는 디자이너',
   photo: asset('/images/profile.webp'),
 }

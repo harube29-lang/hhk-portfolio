@@ -33,11 +33,11 @@ export default function Footer() {
             </a>
           </Magnetic>
 
-          <dl className="text-sm md:justify-self-end">
+          <dl className="border-t border-paper/15 pt-6 md:justify-self-end md:border-0 md:pt-0 md:text-right">
             <div>
-              <dt className="mb-2 text-xs tracking-[0.2em] text-paper/40">PHONE</dt>
+              <dt className="mb-2 text-xs tracking-[0.2em] text-paper/40 md:mb-3">PHONE</dt>
               <dd>
-                <a href={`tel:${CONTACT.phone.replaceAll('-', '')}`} className="font-display text-xl font-bold tracking-tight transition-colors hover:text-accent md:text-4xl">
+                <a href={`tel:${CONTACT.phone.replaceAll('-', '')}`} className="font-display text-[clamp(1.5rem,3.2vw,3rem)] font-bold tracking-tight tabular-nums transition-colors hover:text-accent">
                   {CONTACT.phone}
                 </a>
               </dd>
@@ -45,7 +45,7 @@ export default function Footer() {
           </dl>
         </div>
 
-        {/* 대형 이름 — 글자 폭 ≈ 글꼴 크기 × 6.04 이므로, 여백·스크롤바를 뺀 화면 폭 ÷ 6.2 로 잡아 잘리지 않게 */}
+        {/* 대형 이름 — 글자 폭 ≈ 글꼴 크기 × 6.04 이므로, 단어 사이를 넓힌 만큼 여유를 둬 여백·스크롤바를 뺀 화면 폭 ÷ 6.6 으로 잡아 잘리지 않게 */}
         <div className="mt-14 md:mt-20">
           <motion.p
             aria-hidden
@@ -53,9 +53,9 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="whitespace-nowrap font-display text-[calc((100vw-48px)/6.2)] font-extrabold leading-[1] tracking-tighter text-paper/[0.08] md:text-[min(calc((100vw-96px)/6.2),245px)]"
+            className="whitespace-nowrap font-display text-[calc((100vw-48px)/6.6)] font-extrabold leading-[1] tracking-tighter text-paper/[0.08] md:text-[min(calc((100vw-96px)/6.6),230px)]"
           >
-            HYE KYOUNG
+            HYE<span className="ml-[0.3em]">KYOUNG</span>
           </motion.p>
         </div>
 

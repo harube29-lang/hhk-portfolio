@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 
 const ROLES = [
   { word: 'WEB', kr: '웹 · 모바일 디자인', desc: '브랜드 성격을 읽어낸 반응형 레이아웃', dir: 1 },
-  { word: 'UX/UI', kr: '사용자 경험 설계', desc: '누구나 헤매지 않는 흐름과 화면', dir: -1, outline: true },
+  { word: 'UX/UI', kr: '사용자 경험 설계', desc: '누구나 헤매지 않는 흐름과 화면', dir: -1, accent: true },
   { word: 'DESIGN', kr: '카드뉴스 · 그래픽', desc: '한 장 안에서 핵심이 읽히는 정보 위계', dir: 1 },
 ]
 
@@ -19,7 +19,7 @@ function RoleRow({ role, index, progress }) {
         <motion.span
           style={{ x }}
           className={`block whitespace-nowrap font-display text-[clamp(4rem,17vw,15rem)] font-extrabold leading-[0.85] tracking-[-0.04em] transition-colors duration-500 ${
-            role.outline ? 'text-outline group-hover:text-accent group-hover:[-webkit-text-stroke:0]' : 'group-hover:text-accent'
+            role.accent ? 'text-accent' : 'group-hover:text-accent'
           }`}
         >
           {role.word}
@@ -46,8 +46,8 @@ export default function Roles() {
         <RoleRow key={r.word} role={r} index={i} progress={scrollYProgress} />
       ))}
 
-      {/* 마퀴 띠 */}
-      <div className="mt-16 -rotate-2 bg-accent py-4 text-white md:mt-24 md:py-5" aria-hidden>
+      {/* 마퀴 띠 — 기울이면 양 끝 모서리가 화면 안으로 들어와 잘려 보이므로 화면보다 넓게 */}
+      <div className="-mx-[10vw] mt-16 -rotate-2 bg-accent py-4 text-white md:mt-24 md:py-5" aria-hidden>
         <div className="animate-marquee flex w-max whitespace-nowrap font-display text-2xl font-extrabold tracking-tight md:text-4xl">
           {Array.from({ length: 2 }).map((_, k) => (
             <span key={k} className="flex">

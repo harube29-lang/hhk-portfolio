@@ -38,10 +38,10 @@ export default function ProjectDetail({ project, prev, next }) {
             </Link>
 
             <div className="mb-5 flex items-center gap-2">
-              <span className="rounded-full bg-accent px-3 py-1 text-[11px] font-bold tracking-wider text-white">
+              <span className="rounded-full bg-accent px-3 py-1 text-xs font-bold tracking-wider text-white">
                 {categoryLabel(project.category)}
               </span>
-              <span className="rounded-full border border-paper/25 px-3 py-1 text-[11px] font-semibold text-paper/70">{project.badge}</span>
+              <span className="rounded-full border border-paper/25 px-3 py-1 text-xs font-semibold text-paper/70">{project.badge}</span>
             </div>
 
             <p className="font-display text-sm font-bold tracking-widest text-accent">{project.titleEn}</p>
@@ -53,10 +53,10 @@ export default function ProjectDetail({ project, prev, next }) {
               animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.25, ease: EASE }}
             >
-              <p className="mt-3 text-base font-semibold text-paper/85 md:mt-4 md:text-lg">{project.subtitle}</p>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-paper/60 md:mt-6 md:text-base">{project.description}</p>
+              <p className="mt-3 text-lg font-semibold text-paper/90 md:mt-4">{project.subtitle}</p>
+              <p className="mt-4 max-w-md text-base leading-[1.75] text-paper/75 md:mt-6 md:leading-relaxed md:text-paper/60">{project.description}</p>
 
-              <dl className="mt-6 grid max-w-md grid-cols-2 gap-4 border-t border-paper/15 pt-4 text-xs md:mt-8 md:pt-5 md:text-sm">
+              <dl className="mt-6 grid max-w-md grid-cols-2 gap-4 border-t border-paper/15 pt-4 text-sm md:mt-8 md:pt-5">
                 <div>
                   <dt className="text-paper/40">TYPE</dt>
                   <dd className="mt-1 font-semibold">{project.badge}</dd>
