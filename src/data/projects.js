@@ -115,9 +115,6 @@ export const PROJECTS = [
     titleEn: '365 YANGJI CLINIC',
     category: 'CARDNEWS',
     badge: '카드뉴스',
-    subtitle: '진료 안내부터 셀프 스트레칭까지 4장 시리즈',
-    description:
-      '365 양지한의원의 진료과목 안내와 족저근막염 정보를 4장의 카드뉴스 시리즈로 구성했습니다. 진료과목 소개 → 질환 정의 → 증상 체크 → 셀프 스트레칭 순으로 정보를 나누고, 차분한 로즈 톤과 하단 예약 배너를 통일해 한의원의 편안한 이미지와 신뢰감을 전달하도록 디자인했습니다.',
     tags: ['Card News', 'Medical', 'Series'],
     thumb: { src: asset('/images/cardnews_yangji_1.webp'), w: 1080, h: 1080 },
     cover: asset('/images/cardnews_yangji_1.webp'),
@@ -138,9 +135,6 @@ export const PROJECTS = [
     titleEn: 'SEASONAL HEALTH GUIDE',
     category: 'CARDNEWS',
     badge: '카드뉴스',
-    subtitle: '쌀쌀해진 가을, 미리 챙기는 건강 가이드 4장 시리즈',
-    description:
-      '2026년 10월 월간 가이드로 가을 환절기 건강관리 정보를 4장의 카드뉴스 시리즈로 구성했습니다. 표지 → 환절기 증상 → 필요 영양소 → 가을 제철음식 순으로 정보를 나누고, 펠트 낙엽 배경과 따뜻한 옐로·오렌지 톤, 3D 캐릭터를 더해 딱딱할 수 있는 건강 정보를 친근하고 읽기 쉽게 전달하도록 디자인했습니다.',
     tags: ['Card News', 'Health', 'Series'],
     thumb: { src: asset('/images/cardnews_season_1.webp'), w: 1080, h: 1080 },
     cover: asset('/images/cardnews_season_1.webp'),

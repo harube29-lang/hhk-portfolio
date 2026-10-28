@@ -53,8 +53,10 @@ export default function ProjectDetail({ project, prev, next }) {
               animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.25, ease: EASE }}
             >
-              <p className="mt-3 text-lg font-semibold text-paper/90 md:mt-4">{project.subtitle}</p>
-              <p className="mt-4 max-w-md text-base leading-[1.75] text-paper/75 md:mt-6 md:leading-relaxed md:text-paper/60">{project.description}</p>
+              {project.subtitle && <p className="mt-3 text-lg font-semibold text-paper/90 md:mt-4">{project.subtitle}</p>}
+              {project.description && (
+                <p className="mt-4 max-w-md text-base leading-[1.75] text-paper/75 md:mt-6 md:leading-relaxed md:text-paper/60">{project.description}</p>
+              )}
 
               <dl className="mt-6 grid max-w-md grid-cols-2 gap-4 border-t border-paper/15 pt-4 text-sm md:mt-8 md:pt-5">
                 <div>

@@ -27,8 +27,8 @@ export default function ProjectCard({ project, href, aspect = 'aspect-[4/3]', si
 
         {/* 호버 패널 */}
         <div className="absolute inset-x-3 bottom-3 hidden translate-y-[calc(100%+1rem)] rounded-xl bg-paper/90 p-4 backdrop-blur-md transition-transform duration-500 ease-out-expo group-hover:translate-y-0 group-focus-visible:translate-y-0 md:block">
-          <p className="text-sm font-semibold">{project.subtitle}</p>
-          <ul className="mt-2 flex flex-wrap gap-1.5">
+          {project.subtitle && <p className="mb-2 text-sm font-semibold">{project.subtitle}</p>}
+          <ul className="flex flex-wrap gap-1.5">
             {project.tags.map((t) => (
               <li key={t} className="rounded-full border border-line px-2.5 py-0.5 text-[11px] font-medium text-muted">
                 {t}
