@@ -20,13 +20,13 @@ export default function ProjectCard({ project, href, aspect = 'aspect-[4/3]', si
           fill
           sizes={sizes ?? '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'}
           priority={priority}
-          className={`transition-transform duration-[900ms] ease-out-expo group-hover:scale-[1.06] ${
+          className={`transition-transform duration-[900ms] ease-out-expo md:group-hover:scale-[1.06] ${
             contain ? 'object-contain p-[8%]' : 'object-cover'
           }`}
         />
 
         {/* 호버 패널 */}
-        <div className="absolute inset-x-3 bottom-3 translate-y-[calc(100%+1rem)] rounded-xl bg-paper/90 p-4 backdrop-blur-md transition-transform duration-500 ease-out-expo group-hover:translate-y-0 group-focus-visible:translate-y-0">
+        <div className="absolute inset-x-3 bottom-3 hidden translate-y-[calc(100%+1rem)] rounded-xl bg-paper/90 p-4 backdrop-blur-md transition-transform duration-500 ease-out-expo group-hover:translate-y-0 group-focus-visible:translate-y-0 md:block">
           <p className="text-sm font-semibold">{project.subtitle}</p>
           <ul className="mt-2 flex flex-wrap gap-1.5">
             {project.tags.map((t) => (

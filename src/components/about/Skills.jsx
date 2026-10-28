@@ -40,7 +40,7 @@ export default function Skills() {
       <div className="mx-auto max-w-[1600px] px-5 md:px-10">
         <div className="mb-10 md:mb-20">
           <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-paper/50">( 01 ) SKILLS</p>
-          <h2 className="font-display text-[clamp(2.25rem,8vw,7rem)] font-extrabold leading-[0.9] tracking-[-0.04em]">
+          <h2 className="font-display text-[clamp(2.25rem,8vw,7rem)] font-extrabold leading-[1.02] tracking-[-0.04em]">
             <LineReveal lines={['What I', 'Do Best']} />
           </h2>
         </div>

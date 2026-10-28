@@ -133,6 +133,28 @@ export const PROJECTS = [
     ],
   },
   {
+    slug: 'season-cardnews',
+    title: '환절기 건강관리 백서',
+    titleEn: 'SEASONAL HEALTH GUIDE',
+    category: 'CARDNEWS',
+    badge: '카드뉴스',
+    subtitle: '쌀쌀해진 가을, 미리 챙기는 건강 가이드 4장 시리즈',
+    description:
+      '2026년 10월 월간 가이드로 가을 환절기 건강관리 정보를 4장의 카드뉴스 시리즈로 구성했습니다. 표지 → 환절기 증상 → 필요 영양소 → 가을 제철음식 순으로 정보를 나누고, 펠트 낙엽 배경과 따뜻한 옐로·오렌지 톤, 3D 캐릭터를 더해 딱딱할 수 있는 건강 정보를 친근하고 읽기 쉽게 전달하도록 디자인했습니다.',
+    tags: ['Card News', 'Health', 'Series'],
+    thumb: { src: asset('/images/cardnews_season_1.webp'), w: 1080, h: 1080 },
+    cover: asset('/images/cardnews_season_1.webp'),
+    thumbFit: 'contain',
+    tone: '#fdeaa8',
+    layout: 'grid',
+    images: [
+      { src: asset('/images/cardnews_season_1.webp'), w: 1080, h: 1080, label: '건강관리 백서 표지' },
+      { src: asset('/images/cardnews_season_2.webp'), w: 1080, h: 1080, label: '환절기 증상' },
+      { src: asset('/images/cardnews_season_3.webp'), w: 1080, h: 1080, label: '환절기 필요 영양소' },
+      { src: asset('/images/cardnews_season_4.webp'), w: 1080, h: 1080, label: '가을 제철음식' },
+    ],
+  },
+  {
     slug: 'ott',
     title: '넷플릭스st OTT',
     titleEn: 'OTT LANDING',
