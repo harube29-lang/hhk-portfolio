@@ -6,10 +6,16 @@ import { LineReveal, Reveal } from '@/components/ui/Reveal'
 
 const EASE = [0.16, 1, 0.3, 1]
 
-/* 툴 한 줄 — 뷰포트 진입 시 숙련도 바가 왼쪽부터 차오름 */
+/* 툴 한 줄 — 뷰포트 진입 시 숙련도 바가 왼쪽부터 차오름
+   (scaleX 0 인 바는 면적이 0이라 진입 감지가 누락될 수 있어, 감지는 줄 전체(li)에서 하고 바는 variants 로 따라감) */
 function ToolRow({ tool, index }) {
   return (
-    <li className="group border-b border-paper/15 py-4 md:py-8">
+    <motion.li
+      className="group border-b border-paper/15 py-4 md:py-8"
+      initial="hidden"
+      whileInView="shown"
+      viewport={{ once: true, margin: '-10% 0px' }}
+    >
       <div className="flex items-baseline justify-between gap-4">
         <div className="min-w-0">
           <p className="font-display text-xl font-extrabold tracking-tight transition-colors group-hover:text-accent md:text-5xl">{tool.name}</p>
@@ -24,13 +30,11 @@ function ToolRow({ tool, index }) {
         <motion.div
           className="h-full origin-left rounded-full bg-accent"
           style={{ width: `${tool.level}%` }}
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true, margin: '-10% 0px' }}
+          variants={{ hidden: { scaleX: 0 }, shown: { scaleX: 1 } }}
           transition={{ duration: 1.2, delay: index * 0.08, ease: EASE }}
         />
       </div>
-    </li>
+    </motion.li>
   )
 }
 

@@ -48,8 +48,7 @@ export const TOOL_GROUPS = [
     items: [
       { name: 'HTML', level: 65, desc: '웹 페이지 구조 마크업' },
       { name: 'CSS', level: 65, desc: '스타일링과 반응형 레이아웃' },
-      { name: 'React', level: 40, desc: '컴포넌트 기반 화면 구현' },
-      { name: 'JavaScript', level: 35, desc: '동적 인터랙션 구현' },
+      { name: 'JavaScript', level: 40, desc: '동적 인터랙션 구현' },
     ],
   },
 ]
