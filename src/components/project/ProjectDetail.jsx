@@ -23,6 +23,8 @@ const columnWidth = (project) => {
 export default function ProjectDetail({ project, prev, next }) {
   const ready = useOpeningDone()
   const isGrid = project.layout === 'grid'
+  /* 세로로 긴 작업 이미지는 모바일에서 좌우 여백 없이 화면 폭에 꽉 차게 (글씨 가독성) */
+  const isFullBleed = !isGrid && project.images.length > 0
 
   return (
     <article className="bg-ink text-paper">
@@ -87,7 +89,7 @@ export default function ProjectDetail({ project, prev, next }) {
         </aside>
 
         {/* ── 작업 이미지 ── */}
-        <div className="px-3 pb-20 md:px-10 lg:pt-28 lg:pb-28">
+        <div className={`${isFullBleed ? 'px-0' : 'px-3'} pb-20 md:px-10 lg:pt-28 lg:pb-28`}>
           <div className={`mx-auto ${columnWidth(project)} ${isGrid ? 'space-y-4' : ''}`}>
             {project.images.length === 0 && (
               <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: `${project.thumb.w}/${project.thumb.h}` }}>
@@ -115,7 +117,7 @@ export default function ProjectDetail({ project, prev, next }) {
             ))}
           </div>
 
-          <PrevNext prev={prev} next={next} className="mx-auto mt-16 grid max-w-[860px] px-2 lg:hidden" />
+          <PrevNext prev={prev} next={next} className={`mx-auto mt-16 grid max-w-[860px] lg:hidden ${isFullBleed ? 'px-5' : 'px-2'}`} />
         </div>
       </div>
     </article>
