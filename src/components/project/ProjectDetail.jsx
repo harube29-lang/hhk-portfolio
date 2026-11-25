@@ -92,7 +92,7 @@ export default function ProjectDetail({ project, prev, next }) {
 
         {/* ── 작업 이미지 ── */}
         <div className={`${isFullBleed ? 'px-0' : 'px-3'} pb-20 ${project.wide ? 'lg:px-10' : 'md:px-10'} lg:pt-28 lg:pb-28`}>
-          <div className={`mx-auto ${columnWidth(project)} ${isGrid ? 'space-y-4' : ''}`}>
+          <div className={`mx-auto ${columnWidth(project)} ${isGrid ? 'space-y-4' : project.gap ? 'space-y-5 md:space-y-8' : ''}`}>
             {project.images.length === 0 && (
               <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: `${project.thumb.w}/${project.thumb.h}` }}>
                 <Image src={project.thumb.src} alt={`${project.title} 대표 화면`} fill priority sizes="860px" className="object-cover" />

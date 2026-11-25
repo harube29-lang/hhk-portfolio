@@ -13,6 +13,7 @@ export const CATEGORIES = [
   { id: 'MOBILE', label: 'MOBILE DESIGN' },
   { id: 'DETAIL', label: 'DETAIL PAGE DESIGN' },
   { id: 'CARDNEWS', label: 'CARD NEWS DESIGN' },
+  { id: 'BANNER', label: 'BANNER DESIGN' },
   { id: 'VIBE', label: 'VIBE CODING' },
 ]
 
@@ -171,6 +172,27 @@ export const PROJECTS = [
       { src: asset('/images/hani_m_page1.webp'), w: 1200, h: 4266, label: '상세페이지 1' },
       { src: asset('/images/hani_m_page2.webp'), w: 1200, h: 3492, label: '상세페이지 2' },
       { src: asset('/images/hani_m_page3.webp'), w: 1200, h: 2930, label: '상세페이지 3' },
+    ],
+  },
+  {
+    slug: 'suchuri-banner',
+    title: '수취리 초코 찹쌀떡 프로모션 배너',
+    titleEn: 'SUCHURI CHOCO BANNER',
+    category: 'BANNER',
+    badge: '자체제작',
+    subtitle: '상세페이지 상단에 들어가는 할인 행사 배너',
+    description:
+      '쫀득한 수취리 떡 속에 진한 초코가 가득 찬 단면을 크게 보여줘서 맛을 바로 떠올릴 수 있게 했습니다. 상품명, 구성, 할인가, 행사 기간을 위에서 아래로 차례대로 배치해 한눈에 구매 정보를 파악할 수 있도록 구성했습니다.',
+    tags: ['Banner', 'Promotion', 'E-commerce'],
+    thumb: { src: asset('/images/banner_suchuri_1.webp'), w: 1750, h: 900 },
+    cover: asset('/images/cover_suchuri.webp'),
+    thumbFit: 'contain',
+    tone: '#E8EEDC',
+    /* 배너끼리 간격 띄우기 */
+    gap: true,
+    images: [
+      { src: asset('/images/banner_suchuri_1.webp'), w: 1750, h: 900, label: '배너 A' },
+      { src: asset('/images/banner_suchuri_2.webp'), w: 1750, h: 900, label: '배너 B' },
     ],
   },
   {
