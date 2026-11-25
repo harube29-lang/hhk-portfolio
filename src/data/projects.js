@@ -184,10 +184,9 @@ export const PROJECTS = [
     description:
       '쫀득한 수취리 떡 속에 진한 초코가 가득 찬 단면을 크게 보여줘서 맛을 바로 떠올릴 수 있게 했습니다. 상품명, 구성, 할인가, 행사 기간을 위에서 아래로 차례대로 배치해 한눈에 구매 정보를 파악할 수 있도록 구성했습니다.',
     tags: ['Banner', 'Promotion', 'E-commerce'],
-    thumb: { src: asset('/images/banner_suchuri_1.webp'), w: 1750, h: 900 },
+    /* 썸네일·홈 커버: 배너 두 장을 겹쳐 놓은 전용 합성 이미지 */
+    thumb: { src: asset('/images/thumb_suchuri.webp'), w: 1920, h: 1440 },
     cover: asset('/images/cover_suchuri.webp'),
-    thumbFit: 'contain',
-    tone: '#E8EEDC',
     /* 배너끼리 간격 띄우기 */
     gap: true,
     images: [
