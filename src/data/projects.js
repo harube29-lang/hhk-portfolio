@@ -163,18 +163,7 @@ export const PROJECTS = [
     cover: asset('/images/thumb_hani.webp'),
     thumbFit: 'contain',
     tone: '#e9dfd7',
-    /* 데스크톱: 한 장 전체를 넓게 · 모바일(lg 미만): 구역별로 잘라 세로로 이어 붙여 글씨가 읽히게 */
-    wide: true,
-    images: [{ src: asset('/images/detail_hani.webp'), w: 2535, h: 4758, label: '작업 내용' }],
-    mobileImages: [
-      { src: asset('/images/hani_m_concept.webp'), w: 1030, h: 1560, label: '컨셉' },
-      { src: asset('/images/hani_m_mockup.webp'), w: 1360, h: 920, label: '목업' },
-      { src: asset('/images/hani_m_page1.webp'), w: 708, h: 2510, label: '상세페이지 1' },
-      { src: asset('/images/hani_m_page2.webp'), w: 709, h: 2060, label: '상세페이지 2' },
-      { src: asset('/images/hani_m_page3.webp'), w: 614, h: 890, label: '주문 전 확인' },
-      { src: asset('/images/hani_m_refund.webp'), w: 460, h: 540, label: '교환 및 반품/환불 안내' },
-      { src: asset('/images/hani_m_table.webp'), w: 470, h: 240, label: '상품 정보' },
-    ],
+    images: [{ src: asset('/images/detail_hani.webp'), w: 1800, h: 12360, label: '작업 내용' }],
   },
   {
     slug: 'ott',

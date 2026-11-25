@@ -13,8 +13,8 @@ const EASE = [0.16, 1, 0.3, 1]
    폭이 좁은 원본(모바일 작업 845px)은 원본 폭까지만 키워 글씨가 읽히면서도 깨지지 않게 */
 const columnWidth = (project) => {
   if (project.layout === 'grid') return 'max-w-[600px]'
-  /* wide: 여러 화면을 한 장에 담은 큰 작업물 — 데스크톱에서 이미지 열을 꽉 채워 크게 */
-  if (project.wide) return 'max-w-[845px] lg:max-w-none'
+  /* wide: 여러 화면을 한 장에 담은 큰 작업물 — 이미지 열을 꽉 채워 크게 (모바일·태블릿은 좌우 여백 없이) */
+  if (project.wide) return 'max-w-none'
   if (project.images.some((img) => img.w < 1000)) return 'max-w-[845px]'
   return 'max-w-[860px]'
 }
@@ -91,26 +91,14 @@ export default function ProjectDetail({ project, prev, next }) {
         </aside>
 
         {/* ── 작업 이미지 ── */}
-        <div className={`${isFullBleed ? 'px-0' : 'px-3'} pb-20 md:px-10 lg:pt-28 lg:pb-28`}>
+        <div className={`${isFullBleed ? 'px-0' : 'px-3'} pb-20 ${project.wide ? 'lg:px-10' : 'md:px-10'} lg:pt-28 lg:pb-28`}>
           <div className={`mx-auto ${columnWidth(project)} ${isGrid ? 'space-y-4' : ''}`}>
             {project.images.length === 0 && (
               <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: `${project.thumb.w}/${project.thumb.h}` }}>
                 <Image src={project.thumb.src} alt={`${project.title} 대표 화면`} fill priority sizes="860px" className="object-cover" />
               </div>
             )}
-            {/* mobileImages 가 있으면 lg 미만에서는 구역별로 잘린 이미지를, lg 이상에서는 원본 한 장을 노출 */}
-            {project.mobileImages ? (
-              <>
-                <div className="hidden lg:block">
-                  <WorkImages project={project} images={project.images} isGrid={isGrid} />
-                </div>
-                <div className="lg:hidden">
-                  <WorkImages project={project} images={project.mobileImages} isGrid={isGrid} />
-                </div>
-              </>
-            ) : (
-              <WorkImages project={project} images={project.images} isGrid={isGrid} />
-            )}
+            <WorkImages project={project} images={project.images} isGrid={isGrid} />
           </div>
 
           <PrevNext prev={prev} next={next} className={`mx-auto mt-16 grid max-w-[860px] lg:hidden ${isFullBleed ? 'px-5' : 'px-2'}`} />
@@ -121,14 +109,8 @@ export default function ProjectDetail({ project, prev, next }) {
 }
 
 function WorkImages({ project, images, isGrid }) {
-  return images.map((img, i) => (
-    <motion.div
-      key={img.src}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-5% 0px' }}
-      transition={{ duration: 0.8, ease: EASE }}
-    >
+  return images.map((img, i) => {
+    const image = (
       <Image
         src={img.src}
         alt={`${project.title} ${img.label}`}
@@ -138,8 +120,26 @@ function WorkImages({ project, images, isGrid }) {
         sizes="860px"
         className={`block h-auto w-full ${isGrid ? 'rounded-2xl' : ''}`}
       />
-    </motion.div>
-  ))
+    )
+    return (
+      <motion.div
+        key={img.src}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-5% 0px' }}
+        transition={{ duration: 0.8, ease: EASE }}
+      >
+        {/* wide 작업물은 탭/클릭하면 원본 해상도로 열려 확대해서 볼 수 있음 */}
+        {project.wide ? (
+          <a href={img.src} target="_blank" rel="noreferrer" className="block cursor-zoom-in" title="원본 크게 보기">
+            {image}
+          </a>
+        ) : (
+          image
+        )}
+      </motion.div>
+    )
+  })
 }
 
 function PrevNext({ prev, next, className = '' }) {
