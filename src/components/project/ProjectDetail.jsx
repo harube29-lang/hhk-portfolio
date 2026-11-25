@@ -98,7 +98,19 @@ export default function ProjectDetail({ project, prev, next }) {
                 <Image src={project.thumb.src} alt={`${project.title} 대표 화면`} fill priority sizes="860px" className="object-cover" />
               </div>
             )}
-            <WorkImages project={project} images={project.images} isGrid={isGrid} />
+            {project.mobileImages ? (
+              <>
+                {/* 데스크톱: 한 장 전체 · 모바일(lg 미만): 구역별로 잘라 글씨가 읽히게 */}
+                <div className="hidden lg:block">
+                  <WorkImages project={project} images={project.images} isGrid={isGrid} />
+                </div>
+                <div className="lg:hidden">
+                  <WorkImages project={project} images={project.mobileImages} isGrid={isGrid} />
+                </div>
+              </>
+            ) : (
+              <WorkImages project={project} images={project.images} isGrid={isGrid} />
+            )}
           </div>
 
           <PrevNext prev={prev} next={next} className={`mx-auto mt-16 grid max-w-[860px] lg:hidden ${isFullBleed ? 'px-5' : 'px-2'}`} />

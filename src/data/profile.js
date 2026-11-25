@@ -63,6 +63,6 @@ export const TIMELINE = [
 
 /* ── ABOUT: 학력 · 교육 (사진 아래) ── */
 export const EDUCATION = [
-  { title: '동명대학교 산업디자인전공', period: '2012.03 – 2016.02' },
+  { title: '동명대학교 산업디자인전공', period: '2012.03 – 2016.08' },
   { title: 'SBS아카데미 웹디자인 개발 양성과정 수료', period: '2026.02 – 2026.07' },
 ]

@@ -155,7 +155,6 @@ export const PROJECTS = [
     titleEn: "HANI'S ORCHARD",
     category: 'DETAIL',
     badge: '자체제작',
-    subtitle: "'매번 실망했던 샤인머스캣'에서 출발한 기획",
     description:
       '산지 직송 샤인머스캣 판매를 위한 상품 상세페이지입니다. 후숙·보관·알탈락까지 미리 안내해 처음 사는 고객도 믿고 주문할 수 있도록 설계했습니다.',
     tags: ['Detail Page', 'Fresh', 'Trustworthy'],
@@ -163,7 +162,16 @@ export const PROJECTS = [
     cover: asset('/images/thumb_hani.webp'),
     thumbFit: 'contain',
     tone: '#e9dfd7',
+    /* 데스크톱: 한 장 전체를 넓게(클릭 시 원본) · 모바일(lg 미만): 구역별로 잘라 글씨가 읽히게 */
+    wide: true,
     images: [{ src: asset('/images/detail_hani.webp'), w: 1800, h: 12360, label: '작업 내용' }],
+    mobileImages: [
+      { src: asset('/images/hani_m_concept.webp'), w: 1200, h: 1368, label: '컨셉' },
+      { src: asset('/images/hani_m_mockup.webp'), w: 960, h: 990, label: '목업' },
+      { src: asset('/images/hani_m_page1.webp'), w: 1200, h: 4266, label: '상세페이지 1' },
+      { src: asset('/images/hani_m_page2.webp'), w: 1200, h: 3492, label: '상세페이지 2' },
+      { src: asset('/images/hani_m_page3.webp'), w: 1200, h: 2930, label: '상세페이지 3' },
+    ],
   },
   {
     slug: 'ott',
